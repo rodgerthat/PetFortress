@@ -10,7 +10,9 @@ public class PlayerLeftController : MonoBehaviour {
     public float moveForce = 365f;
     public float maxSpeed = 5f;
     public float jumpForce = 1000f;
-    public Transform groundCheck;
+    //public Transform groundCheck;
+
+    public LayerMask groundLayer;
 
     private bool grounded = false;
     private Animator animator;
@@ -29,10 +31,11 @@ public class PlayerLeftController : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        //grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
+        //if (Input.GetKeyDown(KeyCode.W) && grounded )
         // if the W key is pressed
-        if (Input.GetKeyDown(KeyCode.W) && grounded )
+        if (Input.GetKeyDown(KeyCode.W) && IsGrounded() )
         {
             jump = true;    
         }
@@ -40,6 +43,7 @@ public class PlayerLeftController : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        /**
         float h = Input.GetAxis("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(h));
         if (h * rb2D.velocity.x < maxSpeed)
@@ -57,6 +61,7 @@ public class PlayerLeftController : MonoBehaviour {
         {
             Flip();
         }
+        **/
         if (jump)
         {
             //animation.SetTrigger("Jump");
@@ -65,6 +70,7 @@ public class PlayerLeftController : MonoBehaviour {
         }
     }
 
+    // this is a handy dandy method for flippin a sprite along it's x-axis
     void Flip()
     {
         facingRight = !facingRight;
@@ -72,4 +78,22 @@ public class PlayerLeftController : MonoBehaviour {
         theScale.x *= -1;
         transform.localScale = theScale;
     }   
+
+    bool IsGrounded()
+    {
+        Vector2 position = transform.position;
+        Vector2 direction = Vector2.down;           // shorthand for Vector2(0, -1.0f)
+        float distance = 1.0f;                      // we don't want the raycast to go on forever, 
+                                                    // just to check the ground beneath them
+
+        // This lets you actually view the RayCast, useful for Debugging and tweaking
+        Debug.DrawRay(position, direction, Color.green);
+        
+        RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
+        if (hit.collider != null)
+        {
+            return true;
+        }
+        return false;
+    }
 }

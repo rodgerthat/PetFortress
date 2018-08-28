@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 495}
   m_MaxSize: {x: 18008, y: 14045}
   vertical: 0
-  controlID: 2584
+  controlID: 2573
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 495}
   m_MaxSize: {x: 14006, y: 14045}
   vertical: 1
-  controlID: 2585
+  controlID: 2574
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 2586
+  controlID: 2575
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_MinSize: {x: 336, y: 271}
   m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-  controlID: 2674
+  controlID: 2546
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -337,8 +337,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 17
-    width: 932
-    height: 494
+    width: 757
+    height: 342
   m_MaximizeOnPlay: 1
   m_Gizmos: 1
   m_Stats: 0
@@ -367,25 +367,25 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
-      width: 1680
-      height: 919
-    m_Scale: {x: 0.3589844, y: 0.35898438}
-    m_Translation: {x: 840.00006, y: 459.5}
+      width: 1366
+      height: 637
+    m_Scale: {x: 0.38779935, y: 0.38779935}
+    m_Translation: {x: 683, y: 318.50006}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -2339.9346
-      y: -1280
-      width: 4679.869
-      height: 2560
+      x: -1761.2201
+      y: -821.30115
+      width: 3522.4402
+      height: 1642.602
     m_MinimalGUI: 1
-  m_defaultScale: 0.35898438
+  m_defaultScale: 0.24882813
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
-  m_LastWindowPixelSize: {x: 1680, y: 936}
+  m_LastWindowPixelSize: {x: 1366, y: 654}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
@@ -421,9 +421,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.0519558, y: -1.1006341, z: -7.7773438}
+    m_Target: {x: -0.68129283, y: -2.0093591, z: -7.7773438}
     speed: 2
-    m_Value: {x: -1.0519558, y: -1.1006341, z: -7.7773438}
+    m_Value: {x: -0.68129283, y: -2.0093591, z: -7.7773438}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -450,9 +450,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 4.180736
+    m_Target: 8.956962
     speed: 2
-    m_Value: 4.180736
+    m_Value: 8.956962
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -564,9 +564,9 @@ MonoBehaviour:
     height: 342
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 52f9ffff
-    m_LastClickedID: -1710
-    m_ExpandedIDs: c4fbffff00000000
+    m_SelectedIDs: 72250000
+    m_LastClickedID: 9586
+    m_ExpandedIDs: d6fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -685,13 +685,13 @@ MonoBehaviour:
   m_StartGridSize: 16
   m_LastFolders: []
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: C:\Users\joelr_000\UnityProjects\PetFortress\Pet Fortress
+  m_LastProjectPath: C:\Users\joelr_000\UnityProjects\PetFortress
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 44250000
     m_LastClickedID: 9540
-    m_ExpandedIDs: b4240000f224000028280000
+    m_ExpandedIDs: b2240000f024000020250000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -719,7 +719,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: b4240000f224000028280000
+    m_ExpandedIDs: b2240000f024000020250000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
