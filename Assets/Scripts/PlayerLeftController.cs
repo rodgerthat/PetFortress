@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerLeftController : MonoBehaviour {
 
     [HideInInspector] public bool facingRight = true;
+    // this creates the littel drop down in the unity inspector 
+    public enum Facing { Left, Right };
+    public Facing orientation;
     [HideInInspector] public bool jump = true;
 
     public float moveForce = 365f;
@@ -14,9 +17,13 @@ public class PlayerLeftController : MonoBehaviour {
 
     public LayerMask groundLayer;
 
+    private bool isFalling = false;
+    private bool isDropping = false;
     private bool grounded = false;
+
     private Animator animator;
     private Rigidbody2D rb2D;
+    private BoxCollider2D bc2D;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +33,9 @@ public class PlayerLeftController : MonoBehaviour {
     {
         //animator = GetComponene<Animator>(); 
         rb2D = GetComponent<Rigidbody2D>();
+        bc2D = GetComponent<BoxCollider2D>();
+        //bc2D.enabled = false;
+        
     }
 
     // Update is called once per frame
@@ -35,14 +45,27 @@ public class PlayerLeftController : MonoBehaviour {
 
         //if (Input.GetKeyDown(KeyCode.W) && grounded )
         // if the W key is pressed
-        if (Input.GetKeyDown(KeyCode.W) && IsGrounded() )
+        //if (Input.GetKeyDown(KeyCode.W) && IsGrounded() )
+        if (Input.GetKeyDown(KeyCode.W) )
         {
             jump = true;    
         }
+
+        // if the down key is pressed for the player, (Player Left, 'S' Key)
+        // then have the player fall through the platform. 
+        // this will involve them ignoring the edge collider until they're out of the trigger zone
+        //if (Input.GetKeyDown(KeyCode.S) && IsGrounded() )
+        if (Input.GetKeyDown(KeyCode.S) )
+        {
+            Debug.Log("S");
+            isDropping = true;
+        } 
+
 	}
 
     private void FixedUpdate()
     {
+
         /**
         float h = Input.GetAxis("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(h));
@@ -69,6 +92,26 @@ public class PlayerLeftController : MonoBehaviour {
             jump = false;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision);
+        Debug.Log("OnCollisionEnter");
+        if (isDropping)
+        {
+            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        }
+    }
+
+    /**
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log(collision);
+        Debug.Log("OnCollisionExit");
+        isDropping = false;
+        collision.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+    }
+    **/
 
     // this is a handy dandy method for flippin a sprite along it's x-axis
     void Flip()
