@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerLeftController : MonoBehaviour {
 
     [HideInInspector] public bool facingRight = true;
+    [HideInInspector] public bool jump = true;
+    [HideInInspector] public bool drop = false;
+
     // this creates the littel drop down in the unity inspector 
     public enum Facing { Left, Right };
     public Facing orientation;
-    [HideInInspector] public bool jump = true;
 
     public float moveForce = 365f;
     public float maxSpeed = 5f;
@@ -17,8 +19,6 @@ public class PlayerLeftController : MonoBehaviour {
 
     public LayerMask groundLayer;
 
-    private bool isFalling = false;
-    private bool isDropping = false;
     private bool grounded = false;
 
     private Animator animator;
@@ -57,8 +57,7 @@ public class PlayerLeftController : MonoBehaviour {
         //if (Input.GetKeyDown(KeyCode.S) && IsGrounded() )
         if (Input.GetKeyDown(KeyCode.S) )
         {
-            Debug.Log("S");
-            isDropping = true;
+            drop = true;
         } 
 
 	}
@@ -97,21 +96,19 @@ public class PlayerLeftController : MonoBehaviour {
     {
         Debug.Log(collision);
         Debug.Log("OnCollisionEnter");
-        if (isDropping)
+        if (drop)
         {
             collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 
-    /**
     private void OnCollisionExit2D(Collision2D collision)
     {
         Debug.Log(collision);
         Debug.Log("OnCollisionExit");
-        isDropping = false;
+        drop = false;
         collision.gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
-    **/
 
     // this is a handy dandy method for flippin a sprite along it's x-axis
     void Flip()
