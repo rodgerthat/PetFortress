@@ -25,8 +25,15 @@ public class PlayerLeftController : MonoBehaviour {
     private Rigidbody2D rb2D;
     private BoxCollider2D bc2D;
 
-	// Use this for initialization
-	void Start () {
+    // Bullet
+    public GameObject bullet;
+    Vector2 weaponPosition;
+    Vector2 localWeaponPosition;
+    public float fireRate = 0.5f;
+    private float nextFire = 0;
+
+    // Use this for initialization
+    void Start () {
 	}
 
     private void Awake()
@@ -35,7 +42,12 @@ public class PlayerLeftController : MonoBehaviour {
         rb2D = GetComponent<Rigidbody2D>();
         bc2D = GetComponent<BoxCollider2D>();
         //bc2D.enabled = false;
-        
+
+        // get the weapon's location
+        //weaponPosition = gameObject.transform.GetChild(0).transform.localPosition;  // whew! this gets the first index child
+        localWeaponPosition = gameObject.transform.Find("Weapon").transform.localPosition;
+        //localWeaponPositionOffset = transform.localPosition - localWeaponPosition;       
+
     }
 
     // Update is called once per frame
@@ -55,10 +67,21 @@ public class PlayerLeftController : MonoBehaviour {
         // then have the player fall through the platform. 
         // this will involve them ignoring the edge collider until they're out of the trigger zone
         //if (Input.GetKeyDown(KeyCode.S) && IsGrounded() )
-        if (Input.GetKeyDown(KeyCode.S) )
+        if (Input.GetKey(KeyCode.S) )
         {
             drop = true;
-        } 
+        } else
+        {
+            drop = false;
+        }
+
+
+        // Firing the Weapon
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            FireWeapon();
+        }
 
 	}
 
@@ -90,24 +113,24 @@ public class PlayerLeftController : MonoBehaviour {
             rb2D.AddForce(new Vector2(0f, jumpForce));
             jump = false;
         }
+
+        // might not need to do this here. Better in update()?
+        if (drop)
+        {
+            gameObject.layer = 9;   // 9 is the freefall layer
+        }
+        else
+        {
+            gameObject.layer = 8;   // 8 is the platforms layer
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision);
-        Debug.Log("OnCollisionEnter");
-        if (drop)
-        {
-            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log(collision);
-        Debug.Log("OnCollisionExit");
-        drop = false;
-        collision.gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
 
     // this is a handy dandy method for flippin a sprite along it's x-axis
@@ -136,4 +159,16 @@ public class PlayerLeftController : MonoBehaviour {
         }
         return false;
     }
+
+    void FireWeapon()
+    {
+        Debug.Log(weaponPosition);
+        Debug.Log(localWeaponPosition);
+        weaponPosition = transform.position;
+        //weaponPosition += localWeaponPosition;
+        // trying to get the value of this dynamically based on the position of the child gameObject "Weapon"
+        weaponPosition += new Vector2(0.8f, 0.3f);
+        Instantiate(bullet, weaponPosition, Quaternion.identity);
+    }
+
 }

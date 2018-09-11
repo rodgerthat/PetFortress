@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetFortress", "PetFortress.csproj", "{A5767634-84D1-A1E5-DA05-D81CE8956F68}"
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{16C2EBDD-9418-EFEE-7F85-77609C0A7906}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A5767634-84D1-A1E5-DA05-D81CE8956F68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5767634-84D1-A1E5-DA05-D81CE8956F68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5767634-84D1-A1E5-DA05-D81CE8956F68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5767634-84D1-A1E5-DA05-D81CE8956F68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16C2EBDD-9418-EFEE-7F85-77609C0A7906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16C2EBDD-9418-EFEE-7F85-77609C0A7906}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16C2EBDD-9418-EFEE-7F85-77609C0A7906}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16C2EBDD-9418-EFEE-7F85-77609C0A7906}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
